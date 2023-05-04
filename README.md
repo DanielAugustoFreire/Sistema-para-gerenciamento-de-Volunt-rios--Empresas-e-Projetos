@@ -1,0 +1,2 @@
+# Sistema para gerenciamento de Voluntários, Empresas e Projetos
+ Seu trabalho é fazer um programa utilizando vetores para controle de uma ONG. O sistema deve realizar o gerenciamento dos voluntários, das empresas parceiras e históricos de projetos. Cada voluntário pode estar em um ou mais projetos, e para cada projeto pode-se ter uma ou mais empresas parceiras. No desenho a seguir, são apresentados exemplos de alguns voluntários, empresas e projetos a serem cadastrados nos vetores.

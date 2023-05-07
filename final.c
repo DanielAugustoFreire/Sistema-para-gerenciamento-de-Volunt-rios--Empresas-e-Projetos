@@ -32,7 +32,7 @@ int main(void)
                         scanf("%d", &nome_voluntario[tlVoluntairo]);*/
                         for(i=0;i<tlVoluntairo;i++)
                         {
-                            if(numero_vol==vNum[i]);encontrou=1;
+                            if(numero_vol==vNum[i])encontrou=1;
                         }
                         if(encontrou == 1)
                         {

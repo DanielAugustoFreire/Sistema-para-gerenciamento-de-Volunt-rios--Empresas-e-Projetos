@@ -3,14 +3,19 @@
 int main(void)
 {
     //Var Normais Inteiras
-    int opcao, i, op2, numero_vol, encontrou;
+    int opcao, i, op2, numero_vol, encontrou, cod_empresa, cod_projeto;
     //Var Int TL
-    int  tlVoluntairo=0, tlEmpresa=0;
+    int  tlVoluntairo=0, tlEmpresa=0, tlProjeto=0;
     //Var de Vet
-    int vNum[TF], vVoluntario[TF];
+    int vNum[TF], vCod[TF] , vProjeto[TF];
     /*
-    char nome_voluntario[100];
+    char nome_voluntario[100], nome_empresa[100], desc_projeto[100];
     */
+    //Vetores de strings
+    char vVoluntario[TF], vEmpresa[TF], vDesc[TF];
+
+
+
     printf("############\n1-Cadastro\n2-Exclusao\n3-Lancamento\n4-Relatorio\n5-Finalizar\t\t");
     scanf("%d", &opcao);
     while(opcao!=5)
@@ -29,7 +34,7 @@ int main(void)
                         printf("Entre com o Numero do Voluntario:");
                         scanf("%d", &numero_vol);
                         /*printf("Entre com o nome do Voluntario");
-                        scanf("%d", &nome_voluntario[tlVoluntairo]);*/
+                        scanf("%s", &nome_voluntario);*/
                         for(i=0;i<tlVoluntairo;i++)
                         {
                             if(numero_vol==vNum[i])encontrou=1;
@@ -47,9 +52,47 @@ int main(void)
                         break;
                     //Empresa
                     case 2:
+                        encontrou = 0;
+                        printf("Entre com o Codigo da Empresa:");
+                        scanf("%d", &cod_empresa);
+                        /*printf("Entre com o nome da Empresa");
+                        scanf("%s", &nome_empresa);*/
+                        for(i=0;i<tlEmpresa;i++)
+                        {
+                            if(cod_empresa==vCod[i])encontrou=1;
+                        }
+                        if(encontrou == 1)
+                        {
+                            printf("Empresa ja cadastrado");
+                        }
+                        else
+                        {
+                            //vEmpresa[tlEmpresa] = nome_empresa;
+                            vCod[tlEmpresa]=cod_empresa;
+                            tlEmpresa++;
+                        }
                         break;
                     //Projeto
                     case 3:
+                        encontrou=0;
+                        printf("Entre com o codigo do Projeto:");
+                        scanf("%d", &cod_projeto);
+                        /*printf("Entre com a desc. do projeto:");
+                        scanf("%s", &desc_projeto)*/
+                        for(i=0;i<tlProjeto;i++)
+                        {
+                            if(cod_projeto==vProjeto[tlProjeto])encontrou=1;
+                        }
+                        if(encontrou==1)
+                        {
+                            printf("Projeto ja listado.");
+                        }
+                        else
+                        {
+                            //vDesc[tlProjeto]=desc_projeto;
+                            vProjeto[tlProjeto]=cod_projeto;
+                            tlProjeto++;
+                        }
                         break;
                     //Retornar
                     case 4: printf("Retornando:");

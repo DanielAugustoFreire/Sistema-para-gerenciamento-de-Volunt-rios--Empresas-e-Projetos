@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #define TF 9
 int main(void)
 {
@@ -8,9 +10,9 @@ int main(void)
     int  tlVoluntairo=0, tlEmpresa=0, tlProjeto=0;
     //Var de Vet
     int vNum[TF], vCod[TF] , vProjeto[TF];
-    /*
-    char nome_voluntario[100], nome_empresa[100], desc_projeto[100];
-    */
+
+    char nome_voluntario[20], nome_empresa[20], desc_projeto[100];
+
     //Vetores de strings
     char vVoluntario[TF], vEmpresa[TF], vDesc[TF];
 
@@ -33,8 +35,8 @@ int main(void)
                         encontrou = 0;
                         printf("Entre com o Numero do Voluntario:");
                         scanf("%d", &numero_vol);
-                        /*printf("Entre com o nome do Voluntario");
-                        scanf("%s", &nome_voluntario);*/
+                        printf("Entre com o nome do Voluntario");
+                        fgets(nome_voluntario, sizeof(nome_voluntario), stdin);
                         for(i=0;i<tlVoluntairo;i++)
                         {
                             if(numero_vol==vNum[i])encontrou=1;
@@ -45,7 +47,7 @@ int main(void)
                         }
                         else
                         {
-                            //vVoluntario[tlVoluntairo]=nome_voluntario;
+                            vVoluntario[tlVoluntairo]=nome_voluntario;
                             vNum[tlVoluntairo]=numero_vol;
                             tlVoluntairo++;
                         }
@@ -55,8 +57,8 @@ int main(void)
                         encontrou = 0;
                         printf("Entre com o Codigo da Empresa:");
                         scanf("%d", &cod_empresa);
-                        /*printf("Entre com o nome da Empresa");
-                        scanf("%s", &nome_empresa);*/
+                        printf("Entre com o nome da Empresa");
+                        fgets(nome_empresa, sizeof(nome_empresa), stdin);
                         for(i=0;i<tlEmpresa;i++)
                         {
                             if(cod_empresa==vCod[i])encontrou=1;
@@ -67,7 +69,7 @@ int main(void)
                         }
                         else
                         {
-                            //vEmpresa[tlEmpresa] = nome_empresa;
+                            vEmpresa[tlEmpresa] = nome_empresa;
                             vCod[tlEmpresa]=cod_empresa;
                             tlEmpresa++;
                         }
@@ -77,8 +79,8 @@ int main(void)
                         encontrou=0;
                         printf("Entre com o codigo do Projeto:");
                         scanf("%d", &cod_projeto);
-                        /*printf("Entre com a desc. do projeto:");
-                        scanf("%s", &desc_projeto)*/
+                        printf("Entre com a desc. do projeto:");
+                        fgets(desc_projeto, sizeof(desc_projeto), stdin);
                         for(i=0;i<tlProjeto;i++)
                         {
                             if(cod_projeto==vProjeto[tlProjeto])encontrou=1;

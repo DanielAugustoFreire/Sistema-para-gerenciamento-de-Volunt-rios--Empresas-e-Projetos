@@ -1,18 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define TF 9
+#define TF 10
 int main(void)
 {
     //Var Normais Inteiras
-    int opcao, i, numero_vol, encontrou, cod_empresa, cod_projeto;
+    int opcao, i, numero_vol, encontrou, cod_empresa, cod_projeto, certo=0;
     //Var Int TL
     int  tlVoluntairo=0, tlEmpresa=0, tlProjeto=0;
     //Var de Vet
-    int vNum[TF], vCod[TF] , vProjeto[TF];
+    int vNumVoluntario[TF], vCodEmpresa[TF], vProjeto[TF], vProjetoH[TF*2], vNumH[TF*2], vCodH[TF*2], vHoras[TF*2];
 
     char nome_voluntario[20], nome_empresa[20], desc_projeto[100];
-
     //Vetores de strings
     char vVoluntario[TF][20], vEmpresa[TF][20], vDesc[TF][100];
 
@@ -51,11 +50,11 @@ int main(void)
                         printf("\nEntre com o Numero do Voluntario:");
                         scanf("%d", &numero_vol);
                         getchar();
-                        printf("\nEntre com o nome do Voluntario");
+                        printf("\nEntre com o nome do Voluntario: ");
                         fgets(nome_voluntario, sizeof(nome_voluntario), stdin);
                         for(i=0;i<tlVoluntairo;i++)
                         {
-                            if(numero_vol==vNum[i])encontrou=1;
+                            if(numero_vol==vNumVoluntario[i])encontrou=1;
                         }
                         if(encontrou == 1)
                         {
@@ -64,9 +63,9 @@ int main(void)
                         else
                         {
                             strcpy(vVoluntario[tlVoluntairo], nome_voluntario);
-                            vNum[tlVoluntairo]=numero_vol;
+                            vNumVoluntario[tlVoluntairo]=numero_vol;
                             tlVoluntairo++;
-                            printf("\nVoluntario [%d] - %s", vNum[tlVoluntairo-1], vVoluntario[tlVoluntairo-1]);
+                            printf("\nVoluntario [%d] - %s", vNumVoluntario[tlVoluntairo-1], vVoluntario[tlVoluntairo-1]);
                         }
                         break;
                     //Empresa
@@ -79,7 +78,7 @@ int main(void)
                         fgets(nome_empresa, sizeof(nome_empresa), stdin);
                         for(i=0;i<tlEmpresa;i++)
                         {
-                            if(cod_empresa==vCod[i])encontrou=1;
+                            if(cod_empresa==vCodEmpresa[i])encontrou=1;
                         }
                         if(encontrou == 1)
                         {
@@ -88,9 +87,9 @@ int main(void)
                         else
                         {
                             strcpy(vEmpresa[tlEmpresa], nome_empresa);
-                            vCod[tlEmpresa]=cod_empresa;
+                            vCodEmpresa[tlEmpresa]=cod_empresa;
                             tlEmpresa++;
-                            printf("\nEmpresa [%d] - %s", vCod[tlEmpresa-1], vEmpresa[tlEmpresa-1]);
+                            printf("\nEmpresa [%d] - %s", vCodEmpresa[tlEmpresa-1], vEmpresa[tlEmpresa-1]);
                         }
                         break;
                     //Projeto
@@ -149,20 +148,42 @@ int main(void)
 
             //Lancamento de horas
             case 3:     
+                certo=3;
                 printf("\tLancamento de Horas\n\nEntre com o numero do Projeto:");
                 scanf("%d", &cod_projeto);
                 printf("Entre com o numero do voluntario: ");
-                scanf("%d", numero_vol);
+                scanf("%d", &numero_vol);
                 printf("Entre com o numero da empresa: ");
-                scanf("%d", &cod_empresa)
+                scanf("%d", &cod_empresa);
 
 
+                for(i=0;i<TF;i++)
+                {
+                    if(vCodEmpresa[i] != cod_empresa)printf(".");
+                    else
+                    {
+                        certo-=1;
+                        printf("\nNumero da Empresa Invalido\n");
+                    }
+                    if(vNumVoluntario[i]!= numero_vol)printf(".");
+                    else
+                    {
+                        certo-=1;
+                        printf("\nNumero de Voluntario invalido");
+                    }
+                    if(vCodEmpresa[i] != cod_empresa)printf(".");
+                    else
+                    {
+                        certo-=1;
+                        printf("\nNumero do Projeto invalido\n");
+                    }
+                }  
 
-
-
-
-
-
+                if(certo==3)printf("Entre Agora com o Numero de Horas que o Voluntario Executou: ");
+                else
+                {
+                    
+                }
 
                 break;
 

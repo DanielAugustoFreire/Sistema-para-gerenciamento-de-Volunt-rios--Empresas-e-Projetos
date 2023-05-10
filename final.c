@@ -5,11 +5,11 @@
 int main(void)
 {
     //Var Normais Inteiras
-    int opcao, i, numero_vol, encontrou, cod_empresa, cod_projeto, certo=0;
+    int opcao, i, numero_vol, encontrou, cod_empresa, cod_projeto, certo=0, horas;
     //Var Int TL
-    int  tlVoluntairo=0, tlEmpresa=0, tlProjeto=0;
+    int  tlVoluntairo=0, tlEmpresa=0, tlProjeto=0, tlHoras=0;
     //Var de Vet
-    int vNumVoluntario[TF], vCodEmpresa[TF], vProjeto[TF], vProjetoH[TF*2], vNumH[TF*2], vCodH[TF*2], vHoras[TF*2];
+    int vNumVoluntario[TF], vCodEmpresa[TF], vProjeto[TF], vProjetoH[TF*2], vNumVoluntH[TF*2], vCodEmpresH[TF*2], vHoras[TF*2];
 
     char nome_voluntario[20], nome_empresa[20], desc_projeto[100];
     //Vetores de strings
@@ -171,7 +171,7 @@ int main(void)
                         certo-=1;
                         printf("\nNumero de Voluntario invalido");
                     }
-                    if(vCodEmpresa[i] != cod_empresa)printf(".");
+                    if(vProjeto[i] != cod)printf(".");
                     else
                     {
                         certo-=1;
@@ -179,7 +179,14 @@ int main(void)
                     }
                 }  
 
-                if(certo==3)printf("Entre Agora com o Numero de Horas que o Voluntario Executou: ");
+                if(certo==3)
+                {
+                    printf("Entre Agora com o Numero de Horas que o Voluntario Executou: ");
+                    scanf("%d", &horas);
+                    vHoras[tlHoras]=horas;
+                    vCodEmpresH[tlHoras]= cod_empresa;
+                    vProjetoH=
+                }
                 else
                 {
                     

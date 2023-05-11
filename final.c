@@ -186,7 +186,7 @@ int main(void)
                     scanf("%d", &horas);
                     vHoras[tlHoras]=horas;
                     vCodEmpresH[tlHoras]= cod_empresa;
-                    vProjetoH=
+                    vProjetoH[tlHoras]= cod_projeto;
                 }
                 else
                 {

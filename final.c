@@ -123,9 +123,9 @@
                         default: printf("Entrada nao identificada, retornando....\n");
                     }
                     break;
-                    
+
                 //Exclusao
-                case 2: 
+                case 2:
                     printf("Exclusão:\n\n");
                     printf("1. Voluntário\n");
                     printf("2. Empresa\n");
@@ -148,7 +148,7 @@
                     break;
 
                 //Lancamento de horas
-                case 3:     
+                case 3:
                     certo=3;
                     printf("\tLancamento de Horas\n\nEntre com o numero do Projeto:");
                     scanf("%d", &cod_projeto);
@@ -157,28 +157,50 @@
                     printf("Entre com o numero da empresa: ");
                     scanf("%d", &cod_empresa);
 
+                    int encontrado_voluntario = 0;
+                    int encontrado_empresa = 0;
+                    int encontrado_projeto = 0;
 
-                    for(i=0;i<TF;i++)
+                    for (i = 0; i < tlVoluntairo; i++)
                     {
-                        if(vCodEmpresa[i] != cod_empresa)printf(".");
-                        else
+                        if (vNumVoluntario[i] == numero_vol)
                         {
-                            certo-=1;
-                            printf("\nNumero da Empresa Invalido\n");
+                            encontrado_voluntario = 1;
+                            break;
                         }
-                        if(vNumVoluntario[i]!= numero_vol)printf(".");
-                        else
+                    }
+
+                    for (i = 0; i < tlEmpresa; i++)
+                    {
+                        if (vCodEmpresa[i] == cod_empresa)
                         {
-                            certo-=1;
-                            printf("\nNumero de Voluntario invalido");
+                            encontrado_empresa = 1;
+                            break;
                         }
-                        if(vProjeto[i] != cod_projeto)printf(".");
-                        else
+                    }
+
+                    for (i = 0; i < tlProjeto; i++)
+                    {
+                        if (vProjeto[i] == cod_projeto)
                         {
-                            certo-=1;
-                            printf("\nNumero do Projeto invalido\n");
+                            encontrado_projeto = 1;
+                            break;
                         }
-                    }  
+                    }
+
+                    if (!encontrado_voluntario) {
+                        printf("\nNumero de Voluntario inválido\n");
+                        certo = 0;
+                    }
+                    if (!encontrado_empresa) {
+                        printf("\nNumero da Empresa Inválido\n");
+                        certo = 0;
+                    }
+                    if (!encontrado_projeto) {
+                        printf("\nNumero do Projeto inválido\n");
+                        certo = 0;
+                    }
+
 
                     if(certo==3)
                     {
@@ -195,7 +217,7 @@
                         printf("\nNão foi possivel realizar o lancamento de horas, tente novamente...\n");
                     }
 
-                    break;  
+                    break;
 
 
                 //Relatorio
@@ -218,17 +240,17 @@
                         for(i=0;i<tlHoras;i++)
                         {
                         printf("HORAS:\n");
-                        printf("Projeto(s)\tNumero_Voluntario\tCod_Empresa\tHoras\n");
-                        printf("[%d]\t[%d]\t[%d]\t[%d]", vProjetoH, vNumVoluntH, vCodEmpresH, vHoras); 
+                        printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
+                        printf(" [ %d]           [ %d]                [  %d]          [  %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
                         }
-                      
+
 
                     break;
                 //Default
                 default: printf("Default\n\n");
             }
 
-            printf("\nMenu:\n");
+            printf("\n\n\nMenu:\n");
             printf("1. Cadastro\n");
             printf("2. Exclusão\n");
             printf("3. Lançamento de Horas\n");

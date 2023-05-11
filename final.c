@@ -6,7 +6,7 @@
     int main(void)
     {
         //Var Normais Inteiras
-        int opcao, i, numero_vol, encontrou, cod_empresa, cod_projeto, certo=0, horas;
+        int opcao, i, j, numero_vol, encontrou, cod_empresa, cod_projeto, certo=0, horas;
         //Var Int TL
         int  tlVoluntairo=0, tlEmpresa=0, tlProjeto=0, tlHoras=0;
         //Var de Vet
@@ -126,24 +126,43 @@
 
                 //Exclusao
                 case 2:
-                    printf("Exclusão:\n\n");
-                    printf("1. Voluntário\n");
-                    printf("2. Empresa\n");
-                    printf("3. Projeto\n");
-                    printf("4. Retornar\n\n");
-                    printf("Digite o numero correspondente: ");
-                    scanf("%d", &opcao);
-                    switch (opcao)
+                    certo = 0;
+                    printf("Exclusão de Voluntario:\n\n");
+                    printf("Entre com o numero do Voluntario: ");
+                    scanf("%d", &numero_vol);
+                    for(i=0;i<tlVoluntairo;i++)
                     {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4: printf("Retornando:");
-                            break;
-                        default: printf("Entrada nao identificada, retornando....\n");
+                        if(numero_vol==vNumVoluntario[i])
+                        {
+                            certo=1;
+                        }
+                    }
+                    if(certo)
+                    {
+                        // Verifica se o voluntário tem horas cadastradas
+                        for(i=0;i<tlHoras;i++)
+                        {
+                            if (numero_vol==vNumVoluntH[i])
+                            {
+                                certo=0;
+                                printf("Voluntario tem horas cadastradas, impossivel excluir.");
+                            }
+                        }
+                        if(certo)
+                        {
+
+                            for (j=i;j<tlVoluntairo-1;j++)
+                            {
+                                vNumVoluntario[j]=vNumVoluntario[j+1];
+                                strcpy(vVoluntario[j],vVoluntario[j+1]);
+                            }
+                            tlVoluntairo--;
+                            printf("Voluntario Excluido com sucesso.");
+                        }
+                    }
+                    else
+                    {
+                        printf("Voluntario inexistente...");
                     }
                     break;
 
@@ -157,46 +176,46 @@
                     printf("Entre com o numero da empresa: ");
                     scanf("%d", &cod_empresa);
 
-                    int encontrado_voluntario = 0;
-                    int encontrado_empresa = 0;
-                    int encontrado_projeto = 0;
+                    int encontrado_voluntario=0;
+                    int encontrado_empresa=0;
+                    int encontrado_projeto=0;
 
-                    for (i = 0; i < tlVoluntairo; i++)
+                    for(i=0;i< tlVoluntairo;i++)
                     {
-                        if (vNumVoluntario[i] == numero_vol)
+                        if(vNumVoluntario[i]==numero_vol)
                         {
-                            encontrado_voluntario = 1;
+                            encontrado_voluntario=1;
                             break;
                         }
                     }
 
-                    for (i = 0; i < tlEmpresa; i++)
+                    for(i =0;i<tlEmpresa;i++)
                     {
-                        if (vCodEmpresa[i] == cod_empresa)
+                        if(vCodEmpresa[i]==cod_empresa)
                         {
-                            encontrado_empresa = 1;
+                            encontrado_empresa=1;
                             break;
                         }
                     }
 
-                    for (i = 0; i < tlProjeto; i++)
+                    for(i=0;i <tlProjeto;i++)
                     {
-                        if (vProjeto[i] == cod_projeto)
+                        if(vProjeto[i]==cod_projeto)
                         {
-                            encontrado_projeto = 1;
+                            encontrado_projeto=1;
                             break;
                         }
                     }
 
-                    if (!encontrado_voluntario) {
+                    if(!encontrado_voluntario) {
                         printf("\nNumero de Voluntario inválido\n");
                         certo = 0;
                     }
-                    if (!encontrado_empresa) {
+                    if(!encontrado_empresa) {
                         printf("\nNumero da Empresa Inválido\n");
                         certo = 0;
                     }
-                    if (!encontrado_projeto) {
+                    if(!encontrado_projeto) {
                         printf("\nNumero do Projeto inválido\n");
                         certo = 0;
                     }
@@ -239,9 +258,9 @@
                         }
                         for(i=0;i<tlHoras;i++)
                         {
-                        printf("HORAS:\n");
-                        printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
-                        printf(" [ %d]           [ %d]                [  %d]          [  %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
+                            printf("HORAS:\n");
+                            printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
+                                printf("[ %d]         [ %d]                [  %d]          [ %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
                         }
 
 

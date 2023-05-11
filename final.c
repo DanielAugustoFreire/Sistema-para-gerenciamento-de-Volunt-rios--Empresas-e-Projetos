@@ -48,7 +48,7 @@
                         //Voluntario
                         case 1:
                             encontrou = 0;
-                            printf("\nEntre com o Numero do Voluntario:");
+                            printf("\nEntre com o Numero do Voluntario: ");
                             scanf("%d", &numero_vol);
                             getchar();
                             printf("\nEntre com o nome do Voluntario: ");
@@ -72,10 +72,10 @@
                         //Empresa
                         case 2:
                             encontrou = 0;
-                            printf("\nEntre com o Codigo da Empresa:");
+                            printf("\nEntre com o Codigo da Empresa: ");
                             scanf("%d", &cod_empresa);
                             getchar();
-                            printf("\nEntre com o nome da Empresa");
+                            printf("\nEntre com o nome da Empresa: ");
                             fgets(nome_empresa, sizeof(nome_empresa), stdin);
                             for(i=0;i<tlEmpresa;i++)
                             {
@@ -99,7 +99,7 @@
                             printf("\nEntre com o codigo do Projeto:");
                             scanf("%d", &cod_projeto);
                             getchar();
-                            printf("\nEntre com a desc. do projeto:\t\t[100CaracteresMax]");
+                            printf("\nEntre com a desc. do projeto:\t\t[100CaracteresMax]: ");
                             fgets(desc_projeto, sizeof(desc_projeto), stdin);
                             for(i=0;i<tlProjeto;i++)
                             {

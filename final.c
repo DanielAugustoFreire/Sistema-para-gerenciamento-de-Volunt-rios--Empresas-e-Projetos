@@ -195,7 +195,7 @@
                         printf("\nNão foi possivel realizar o lancamento de horas, tente novamente...\n");
                     }
 
-                    break;
+                    break;  
 
 
                 //Relatorio

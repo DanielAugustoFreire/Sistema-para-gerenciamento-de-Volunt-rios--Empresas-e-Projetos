@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #define TF 10
+
 int main(void)
 {
     //Var Normais Inteiras
@@ -171,7 +172,7 @@ int main(void)
                         certo-=1;
                         printf("\nNumero de Voluntario invalido");
                     }
-                    if(vProjeto[i] != cod)printf(".");
+                    if(vProjeto[i] != cod_projeto)printf(".");
                     else
                     {
                         certo-=1;
@@ -202,7 +203,6 @@ int main(void)
             default: printf("Default\n\n");
         }
 
-//asdaasdf
 
         
         printf("Bem-vindo!\n\n");

@@ -47,28 +47,35 @@
                     {
                         //Voluntario
                         case 1:
-                            encontrou = 0;
-                            printf("\nEntre com o Numero do Voluntario: ");
+                            printf("\n[0]-Volta Para o Menu Principal\nEntre com o Numero do Voluntario: ");
                             scanf("%d", &numero_vol);
                             getchar();
-                            printf("\nEntre com o nome do Voluntario: ");
-                            fgets(nome_voluntario, sizeof(nome_voluntario), stdin);
-                            for(i=0;i<tlVoluntairo;i++)
+                            while(numero_vol!=0)
                             {
-                                if(numero_vol==vNumVoluntario[i])encontrou=1;
+                                encontrou = 0;
+                                for(i=0;i<tlVoluntairo;i++)
+                                {
+                                    if(numero_vol==vNumVoluntario[i])encontrou=1;
+                                }
+                                if(encontrou == 1)
+                                {
+                                    printf("###   Numero de Voluntario ja cadastrado   ###");
+                                }
+                                else
+                                {
+                                    printf("\nEntre com o nome do Voluntario: ");
+                                    fgets(nome_voluntario, sizeof(nome_voluntario), stdin);
+                                    strcpy(vVoluntario[tlVoluntairo], nome_voluntario);
+                                    vNumVoluntario[tlVoluntairo]=numero_vol;
+                                    tlVoluntairo++;
+                                    printf("\nVoluntario [%d] - %s", vNumVoluntario[tlVoluntairo-1], vVoluntario[tlVoluntairo-1]);
+                                }
+                                printf("\n[0]-Volta Para o Menu Principal\nEntre com o Numero do Voluntario: ");
+                                scanf("%d", &numero_vol);
+                                getchar();
                             }
-                            if(encontrou == 1)
-                            {
-                                printf("###   Numero de Voluntario ja cadastrado   ###");
-                            }
-                            else
-                            {
-                                strcpy(vVoluntario[tlVoluntairo], nome_voluntario);
-                                vNumVoluntario[tlVoluntairo]=numero_vol;
-                                tlVoluntairo++;
-                                printf("\nVoluntario [%d] - %s", vNumVoluntario[tlVoluntairo-1], vVoluntario[tlVoluntairo-1]);
-                            }
-                            break;
+                            break;  
+                
                         //Empresa
                         case 2:
                             encontrou = 0;

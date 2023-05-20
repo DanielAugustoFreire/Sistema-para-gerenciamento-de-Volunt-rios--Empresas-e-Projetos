@@ -271,8 +271,55 @@
                         }
                         break;
                     case 4: 
-                        printf("Exclusão de Horas:");
-                        
+                        certo=0;
+                        printf("Exclusão de Horas:\n");
+                        printf("Entre com o codigo do projeto em que se deseja excuir as horas:");
+                        scanf("%d", &cod_projeto);
+                        for(i=0;i<tlHoras;i++)
+                        {
+                            if(cod_projeto==vProjetoH[i])
+                            {
+                            certo=1;
+                            }
+                            else certo=0;
+                        }
+                        if(certo==1)
+                        {
+                        printf("Entre com o numero da empresa que deseja exluir as horas");
+                        scanf("%d", &cod_empresa);
+                        for(i=0;i<tlHoras;i++)
+                        {
+                            if(cod_empresa==vCodEmpresH[i])
+                            {
+                            certo=1;
+                            }
+                            else certo=0;
+                        }
+                        }
+                        if(certo==1)
+                        {
+                        printf("Entre com o numero do Voluntario em que deseja excluir as horas:");
+                        scanf("%d", &numero_vol);          
+                        for(i=0;i<tlHoras;i++)
+                        {
+                            if(numero_vol==vNumVoluntH[i])
+                            {
+                            certo=1;
+                            }
+                            else certo=0;
+                        }                                         
+                        }
+                        if(certo==1)
+                        {
+                            printf("Excluindo Horas Registradas do Projeto %d, empresa %d e voluntario %d", cod_projeto, cod_empresa, numero_vol);
+                        }                 
+
+
+
+
+
+
+
                             break;
                     case 5:
                         printf("Retornando...");

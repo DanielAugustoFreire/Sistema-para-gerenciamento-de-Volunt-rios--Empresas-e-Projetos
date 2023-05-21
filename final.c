@@ -6,7 +6,7 @@
     int main(void)
     {
         //Var Normais Inteiras
-        int opcao, i, j, numero_vol, encontrou, cod_empresa, cod_projeto, certo=0, horas;
+        int opcao, i, j, numero_vol, encontrou, cod_empresa, cod_projeto, certo=0, horas, k;
         //Var Int TL
         int  tlVoluntairo=0, tlEmpresa=0, tlProjeto=0, tlHoras=0;
         //Var de Vet
@@ -305,13 +305,20 @@
                             if(numero_vol==vNumVoluntH[i])
                             {
                             certo=1;
+                            k=i;
                             }
                             else certo=0;
                         }                                         
                         }
                         if(certo==1)
                         {
-                            printf("Excluindo Horas Registradas do Projeto %d, empresa %d e voluntario %d", cod_projeto, cod_empresa, numero_vol);
+                            printf("Excluindo Horas Registradas do Projeto %d, empresa %d e voluntario %d\n", cod_projeto, cod_empresa, numero_vol);
+                            for(k=k;k<tlHoras;k++)
+                            {   
+                                vCodEmpresH[k]=vCodEmpresa[k+1];
+                                vProjetoH[k]=vProjetoH[k+1];
+                                vNumVoluntH[k]=vNumVoluntH[k+1];
+                            }
                         }                 
 
 
@@ -348,7 +355,7 @@
 
                     break;
 
-                //Lancamento de horas
+                //Lancamento de ahoras
                 case 3:
                     certo=3;
                     printf("\tLancamento de Horas\n\nEntre com o numero do Projeto:");

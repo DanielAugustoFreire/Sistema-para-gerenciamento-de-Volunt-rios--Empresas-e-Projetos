@@ -281,7 +281,6 @@
                             {
                             certo=1;
                             }
-                            else certo=0;
                         }
                         if(certo==1)
                         {
@@ -291,12 +290,11 @@
                         {
                             if(cod_empresa==vCodEmpresH[i])
                             {
-                            certo=1;
+                            certo=2;
                             }
-                            else certo=0;
                         }
                         }
-                        if(certo==1)
+                        if(certo==2)
                         {
                         printf("Entre com o numero do Voluntario em que deseja excluir as horas:");
                         scanf("%d", &numero_vol);          
@@ -304,13 +302,12 @@
                         {
                             if(numero_vol==vNumVoluntH[i])
                             {
-                            certo=1;
+                            certo=3;
                             k=i;
                             }
-                            else certo=0;
                         }                                         
                         }
-                        if(certo==1)
+                        if(certo==3)
                         {
                             printf("Excluindo Horas Registradas do Projeto %d, empresa %d e voluntario %d\n", cod_projeto, cod_empresa, numero_vol);
                             for(k=k;k<tlHoras;k++)
@@ -318,6 +315,8 @@
                                 vCodEmpresH[k]=vCodEmpresa[k+1];
                                 vProjetoH[k]=vProjetoH[k+1];
                                 vNumVoluntH[k]=vNumVoluntH[k+1];
+                                vHoras[k]=vHoras[k+1];
+                                tlHoras--;
                             }
                         }                 
 

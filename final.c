@@ -22,12 +22,12 @@
 
         printf("Menu:\n");
         printf("1. Cadastro\n");
-        printf("2. Exclusão\n");
-        printf("3. Lançamento\n");
-        printf("4. Relatório\n");
+        printf("2. Exclusao\n");
+        printf("3. Lancamento\n");
+        printf("4. Relatorio \n");
         printf("5. Finalizar\n\n");
 
-        printf("Digite o número correspondente à opção desejada: ");
+        printf("Digite o numero correspondente a  opcao desejada: ");
         scanf("%d", &opcao);
         while(opcao!=5)
         {
@@ -36,12 +36,12 @@
                 //Cadastro
                 case 1:
                     printf("\nCadastro:\n");
-                    printf("1. Voluntário\n");
+                    printf("1. Voluntario \n");
                     printf("2. Empresa\n");
                     printf("3. Projeto\n");
                     printf("4. Retornar\n\n");
 
-                    printf("Digite o número correspondente à opção desejada: ");
+                    printf("Digite o numero correspondente a opcao desejada:");
                     scanf("%d", &opcao);
                     switch(opcao)
                     {
@@ -112,10 +112,11 @@
                             printf("\nEntre com o codigo do Projeto:");
                             scanf("%d", &cod_projeto);
                             getchar(); 
+                            
                             while(cod_projeto!=0)
                             {
                                 encontrou=0;
-                                printf("\nEntre com a desc. do projeto:\t\t[100CaracteresMax]: ");
+                                printf("\nEntre com a descricao do projeto:\t\t[100CaracteresMax]: ");
                                 fgets(desc_projeto, sizeof(desc_projeto), stdin);
                                 for(i=0;i<tlProjeto;i++)
                                 {
@@ -172,7 +173,7 @@
                             }
                             if(certo)
                             {
-                                // Verifica se o voluntário tem horas cadastradas
+                                // Verifica se o voluntÃ¡rio tem horas cadastradas
                                 for(i=0;i<tlHoras;i++)
                                 {
                                     if (numero_vol==vNumVoluntH[i])
@@ -211,10 +212,11 @@
                                 if(cod_empresa==vCodEmpresa[i])
                                 {
                                     certo=1;
-                                    j = i; // Inicializa j com o índice da empresa encontrada
+                                    j = i; // Inicializa j com o Ã­ndice da empresa encontrada
                                     break;
                                 }
                             }
+                            
                             if(certo)
                             {
                                 // Verifica se a empresa tem horas cadastradas
@@ -227,6 +229,7 @@
                                         break;
                                     }
                                 }
+                                
                                 if(certo)
                                 {
                                     for (j=j;j<tlEmpresa-1;j++)
@@ -251,6 +254,7 @@
                             }
                             printf("Entre com o numero do Projeto: ");
                             scanf("%d", &cod_projeto);
+                            
                             for(i=0;i<tlProjeto;i++)
                             {
                                 if(cod_projeto==vProjeto[i])
@@ -260,6 +264,7 @@
                                     break;
                                 }
                             }
+                            
                             if(certo)
                             {
                                 for(i=0;i<tlHoras;i++)
@@ -271,6 +276,7 @@
                                         break;
                                     }
                                 }
+                                
                                 if(certo)
                                 {
                                     for (j=j;j<tlProjeto-1;j++)
@@ -294,10 +300,12 @@
                                 printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
                                     printf("[ %d]         [ %d]                [  %d]          [ %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
                             }
+                            
                             certo=0;
-                            printf("Exclusão de Horas:\n");
+                            printf("Exclusao de Horas:\n");
                             printf("Entre com o codigo do projeto em que se deseja excuir as horas:");
                             scanf("%d", &cod_projeto);
+                            
                             for(i=0;i<tlHoras;i++)
                             {
                                 if(cod_projeto==vProjetoH[i])
@@ -307,8 +315,10 @@
                             }
                             if(certo==1)
                             {
+                            	
                             printf("Entre com o numero da empresa que deseja exluir as horas");
                             scanf("%d", &cod_empresa);
+                            
                             for(i=0;i<tlHoras;i++)
                             {
                                 if(cod_empresa==vCodEmpresH[i])
@@ -320,7 +330,8 @@
                             if(certo==2)
                             {
                             printf("Entre com o numero do Voluntario em que deseja excluir as horas:");
-                            scanf("%d", &numero_vol);          
+                            scanf("%d", &numero_vol); 
+							         
                             for(i=0;i<tlHoras;i++)
                             {
                                 if(numero_vol==vNumVoluntH[i])
@@ -395,15 +406,15 @@
                     }
 
                     if(!encontrado_voluntario) {
-                        printf("\nNumero de Voluntario inválido\n");
+                        printf("\nNumero de Voluntario invalido \n");
                         certo = 0;
                     }
                     if(!encontrado_empresa) {
-                        printf("\nNumero da Empresa Inválido\n");
+                        printf("\nNumero da Empresa Invalido\n");
                         certo = 0;
                     }
                     if(!encontrado_projeto) {
-                        printf("\nNumero do Projeto inválido\n");
+                        printf("\nNumero do Projeto invalido \n");
                         certo = 0;
                     }
 
@@ -412,6 +423,7 @@
                     {
                         printf("Entre Agora com o Numero de Horas que o Voluntario Executou: ");
                         scanf("%d", &horas);
+                        
                         vHoras[tlHoras]=horas;
                         vCodEmpresH[tlHoras]= cod_empresa;
                         vProjetoH[tlHoras]= cod_projeto;
@@ -420,37 +432,56 @@
                     }
                     else
                     {
-                        printf("\nNão foi possivel realizar o lancamento de horas, tente novamente...\n");
+                        printf("\nNao foi possivel realizar o lancamento de horas, tente novamente...\n");
                     }
 
                     break;
 
 
                 //Relatorio
-                case 4: printf("\t###   RELATORIO   ###\n\n");
+                case 4: 
+                		while(opcao!=7)
+                		{
+                		printf("\t###   RELATORIO   ###\n\n");
+                		printf("Deseja ver o relatorio de qual?:\n1-Voluntario\n2-Empresas\n3-Projetos\n4-Horas\n5-Retornar");
+                		scanf("%d", &opcao);
+						switch(opcao)
+						{
+							case 1:
                         printf("VOLUNTARIOS:\n");
                         for(i=0;i<tlVoluntairo;i++)
                         {
                             printf("[%d] - %s\n",vNumVoluntario[i], vVoluntario[i]);
-                        }
-                        printf("EMPRESAS\n");
+                        }								
+								break;
+							case 2:
+                        printf("EMPRESAS:\n");
                         for(i=0;i<tlEmpresa;i++)
                         {
                             printf("[%d] - %s\n", vCodEmpresa[i], vEmpresa[i]);
-                        }
-                        printf("PROJETOS\n");
+                        }								
+								break;
+							case 3:
+                        printf("PROJETOS:\n");
                         for(i=0;i<tlProjeto;i++)
                         {
                             printf("[%d] - %s\n", vProjeto[i], vDesc[i]);
-                        }
+                        }								
+								break;
+							case 4:
                         for(i=0;i<tlHoras;i++)
                         {
                             printf("HORAS:\n");
                             printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
                                 printf("[ %d]         [ %d]                [  %d]          [ %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
-                        }
-
-
+                        }								
+								break;
+							case 5:
+								printf(" Retornando...");
+								opcao = 7;
+								break;
+						}                			
+                		}
                     break;
                 //Default
                 default: printf("Default\n\n");
@@ -458,12 +489,12 @@
 
             printf("\n\n\nMenu:\n");
             printf("1. Cadastro\n");
-            printf("2. Exclusão\n");
-            printf("3. Lançamento de Horas\n");
-            printf("4. Relatório\n");
+            printf("2. Exclusao\n");
+            printf("3. Lancaamento de Horas\n");
+            printf("4. Relatorio\n");
             printf("5. Finalizar\n\n");
 
-            printf("Digite o número correspondente à opção desejada: ");
+            printf("Digite o naomero correspondente a  opcaoo desejada: ");
             scanf("%d", &opcao);
         }
     }

@@ -153,7 +153,12 @@
                     scanf("%d", &opcao);
                     switch (opcao)
                     {
-                    case 1:
+                    case 1:                        
+                        printf("\nVOLUNTARIOS:\n");
+                        for(i=0;i<tlVoluntairo;i++)
+                        {
+                            printf("[%d] - %s\n",vNumVoluntario[i], vVoluntario[i]);
+                        }
                         printf("Entre com o numero do Voluntario: ");
                         scanf("%d", &numero_vol);
                         for(i=0;i<tlVoluntairo;i++)
@@ -192,6 +197,11 @@
                         }
                         break;
                     case 2:
+                        printf("\nEMPRESAS\n");
+                        for(i=0;i<tlEmpresa;i++)
+                        {
+                            printf("[%d] - %s\n", vCodEmpresa[i], vEmpresa[i]);
+                        }
                         printf("Entre com o numero da Empresa: ");
                         scanf("%d", &cod_empresa);
                         for(i=0;i<tlEmpresa;i++)
@@ -232,6 +242,11 @@
                         }
                             break;
                     case 3:
+                        printf("\nPROJETOS\n");
+                        for(i=0;i<tlProjeto;i++)
+                        {
+                            printf("[%d] - %s\n", vProjeto[i], vDesc[i]);
+                        }
                         printf("Entre com o numero do Projeto: ");
                         scanf("%d", &cod_projeto);
                         for(i=0;i<tlProjeto;i++)
@@ -271,6 +286,12 @@
                         }
                         break;
                     case 4: 
+                        for(i=0;i<tlHoras;i++)
+                        {
+                            printf("\nHORAS:\n");
+                            printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
+                                printf("[ %d]         [ %d]                [  %d]          [ %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
+                        }
                         certo=0;
                         printf("Exclusão de Horas:\n");
                         printf("Entre com o codigo do projeto em que se deseja excuir as horas:");
@@ -319,39 +340,12 @@
                                 tlHoras--;
                             }
                         }                 
-
-
-
-
-
-
-
                             break;
                     case 5:
                         printf("Retornando...");
                         opcao=1;
                     default: printf("Entrada nao identificada, retornando....\n");
                     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     break;
 
                 //Lancamento de ahoras

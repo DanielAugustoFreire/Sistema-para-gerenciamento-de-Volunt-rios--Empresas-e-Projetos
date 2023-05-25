@@ -147,206 +147,211 @@
 
                 //Exclusao
                 case 2:
-                    certo = 0;
-                    printf("AREA DE EXCLUSAO:\n\n");
-                    printf("1-Voluntarios\n2-Empresas\n3-Projetos\n4-Excluir Horas\n5-Retorna\n");
-                    scanf("%d", &opcao);
-                    switch (opcao)
+                    while(opcao!=7)
                     {
-                    case 1:                        
-                        printf("\nVOLUNTARIOS:\n");
-                        for(i=0;i<tlVoluntairo;i++)
+                        certo = 0;
+                        printf("AREA DE EXCLUSAO:\n\n");
+                        printf("1-Voluntarios\n2-Empresas\n3-Projetos\n4-Excluir Horas\n5-Retorna\n");
+                        scanf("%d", &opcao);
+                        switch (opcao)
                         {
-                            printf("[%d] - %s\n",vNumVoluntario[i], vVoluntario[i]);
-                        }
-                        printf("Entre com o numero do Voluntario: ");
-                        scanf("%d", &numero_vol);
-                        for(i=0;i<tlVoluntairo;i++)
-                        {
-                            if(numero_vol==vNumVoluntario[i])
+                        case 1:                        
+                            printf("\nVOLUNTARIOS:\n");
+                            for(i=0;i<tlVoluntairo;i++)
                             {
-                                certo=1;
+                                printf("[%d] - %s\n",vNumVoluntario[i], vVoluntario[i]);
                             }
-                        }
-                        if(certo)
-                        {
-                            // Verifica se o voluntário tem horas cadastradas
-                            for(i=0;i<tlHoras;i++)
+                            printf("Entre com o numero do Voluntario: ");
+                            scanf("%d", &numero_vol);
+                            for(i=0;i<tlVoluntairo;i++)
                             {
-                                if (numero_vol==vNumVoluntH[i])
+                                if(numero_vol==vNumVoluntario[i])
                                 {
-                                    certo=0;
-                                    printf("Voluntario tem horas cadastradas, impossivel excluir.");
+                                    certo=1;
                                 }
                             }
                             if(certo)
                             {
+                                // Verifica se o voluntário tem horas cadastradas
+                                for(i=0;i<tlHoras;i++)
+                                {
+                                    if (numero_vol==vNumVoluntH[i])
+                                    {
+                                        certo=0;
+                                        printf("Voluntario tem horas cadastradas, impossivel excluir.");
+                                    }
+                                }
+                                if(certo)
+                                {
 
-                                for (j=i;j<tlVoluntairo-1;j++)
-                                {
-                                    vNumVoluntario[j]=vNumVoluntario[j+1];
-                                    strcpy(vVoluntario[j],vVoluntario[j+1]);
+                                    for (j=i;j<tlVoluntairo-1;j++)
+                                    {
+                                        vNumVoluntario[j]=vNumVoluntario[j+1];
+                                        strcpy(vVoluntario[j],vVoluntario[j+1]);
+                                    }
+                                    tlVoluntairo--;
+                                    printf("Voluntario Excluido com sucesso.");
                                 }
-                                tlVoluntairo--;
-                                printf("Voluntario Excluido com sucesso.");
                             }
-                        }
-                        else
-                        {
-                            printf("Voluntario inexistente...");
-                        }
-                        break;
-                    case 2:
-                        printf("\nEMPRESAS\n");
-                        for(i=0;i<tlEmpresa;i++)
-                        {
-                            printf("[%d] - %s\n", vCodEmpresa[i], vEmpresa[i]);
-                        }
-                        printf("Entre com o numero da Empresa: ");
-                        scanf("%d", &cod_empresa);
-                        for(i=0;i<tlEmpresa;i++)
-                        {
-                            if(cod_empresa==vCodEmpresa[i])
+                            else
                             {
-                                certo=1;
-                                j = i; // Inicializa j com o índice da empresa encontrada
-                                break;
+                                printf("Voluntario inexistente...");
                             }
-                        }
-                        if(certo)
-                        {
-                            // Verifica se a empresa tem horas cadastradas
-                            for(i=0;i<tlHoras;i++)
+                            break;
+                        case 2:
+                            printf("\nEMPRESAS\n");
+                            for(i=0;i<tlEmpresa;i++)
                             {
-                                if (cod_empresa==vCodEmpresH[i])
+                                printf("[%d] - %s\n", vCodEmpresa[i], vEmpresa[i]);
+                            }
+                            printf("Entre com o numero da Empresa: ");
+                            scanf("%d", &cod_empresa);
+                            for(i=0;i<tlEmpresa;i++)
+                            {
+                                if(cod_empresa==vCodEmpresa[i])
                                 {
-                                    certo=0;
-                                    printf("Empresa tem horas cadastradas, impossivel excluir.");
+                                    certo=1;
+                                    j = i; // Inicializa j com o índice da empresa encontrada
                                     break;
                                 }
                             }
                             if(certo)
                             {
-                                for (j=j;j<tlEmpresa-1;j++)
+                                // Verifica se a empresa tem horas cadastradas
+                                for(i=0;i<tlHoras;i++)
                                 {
-                                    vCodEmpresa[j]=vCodEmpresa[j+1];
-                                    strcpy(vEmpresa[j],vEmpresa[j+1]);
+                                    if (cod_empresa==vCodEmpresH[i])
+                                    {
+                                        certo=0;
+                                        printf("Empresa tem horas cadastradas, impossivel excluir.");
+                                        break;
+                                    }
                                 }
-                                tlEmpresa--;
-                                printf("Empresa Excluida com sucesso.");
-                            }
-                        }
-                        else
-                        {
-                            printf("Empresa inexistente...");
-                        }
-                            break;
-                    case 3:
-                        printf("\nPROJETOS\n");
-                        for(i=0;i<tlProjeto;i++)
-                        {
-                            printf("[%d] - %s\n", vProjeto[i], vDesc[i]);
-                        }
-                        printf("Entre com o numero do Projeto: ");
-                        scanf("%d", &cod_projeto);
-                        for(i=0;i<tlProjeto;i++)
-                        {
-                            if(cod_projeto==vProjeto[i])
-                            {
-                                certo=1;
-                                j = i;
-                                break;
-                            }
-                        }
-                        if(certo)
-                        {
-                            for(i=0;i<tlHoras;i++)
-                            {
-                                if (cod_projeto==vProjetoH[i])
+                                if(certo)
                                 {
-                                    certo=0;
-                                    printf("Projeto tem horas cadastradas, impossivel excluir.");
+                                    for (j=j;j<tlEmpresa-1;j++)
+                                    {
+                                        vCodEmpresa[j]=vCodEmpresa[j+1];
+                                        strcpy(vEmpresa[j],vEmpresa[j+1]);
+                                    }
+                                    tlEmpresa--;
+                                    printf("Empresa Excluida com sucesso.");
+                                }
+                            }
+                            else
+                            {
+                                printf("Empresa inexistente...");
+                            }
+                                break;
+                        case 3:
+                            printf("\nPROJETOS\n");
+                            for(i=0;i<tlProjeto;i++)
+                            {
+                                printf("[%d] - %s\n", vProjeto[i], vDesc[i]);
+                            }
+                            printf("Entre com o numero do Projeto: ");
+                            scanf("%d", &cod_projeto);
+                            for(i=0;i<tlProjeto;i++)
+                            {
+                                if(cod_projeto==vProjeto[i])
+                                {
+                                    certo=1;
+                                    j = i;
                                     break;
                                 }
                             }
                             if(certo)
                             {
-                                for (j=j;j<tlProjeto-1;j++)
+                                for(i=0;i<tlHoras;i++)
                                 {
-                                    vProjeto[j]=vProjeto[j+1];
-                                    strcpy(vDesc[j],vDesc[j+1]);
+                                    if (cod_projeto==vProjetoH[i])
+                                    {
+                                        certo=0;
+                                        printf("Projeto tem horas cadastradas, impossivel excluir.");
+                                        break;
+                                    }
                                 }
-                                tlProjeto--;
-                                printf("Projeto Excluida com sucesso.");
+                                if(certo)
+                                {
+                                    for (j=j;j<tlProjeto-1;j++)
+                                    {
+                                        vProjeto[j]=vProjeto[j+1];
+                                        strcpy(vDesc[j],vDesc[j+1]);
+                                    }
+                                    tlProjeto--;
+                                    printf("Projeto Excluida com sucesso.");
+                                }
                             }
-                        }
-                        else
-                        {
-                            printf("Projeto inexistente...");
-                        }
-                        break;
-                    case 4: 
-                        for(i=0;i<tlHoras;i++)
-                        {
-                            printf("\nHORAS:\n");
-                            printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
-                                printf("[ %d]         [ %d]                [  %d]          [ %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
-                        }
-                        certo=0;
-                        printf("Exclusão de Horas:\n");
-                        printf("Entre com o codigo do projeto em que se deseja excuir as horas:");
-                        scanf("%d", &cod_projeto);
-                        for(i=0;i<tlHoras;i++)
-                        {
-                            if(cod_projeto==vProjetoH[i])
+                            else
                             {
-                            certo=1;
+                                printf("Projeto inexistente...");
                             }
-                        }
-                        if(certo==1)
-                        {
-                        printf("Entre com o numero da empresa que deseja exluir as horas");
-                        scanf("%d", &cod_empresa);
-                        for(i=0;i<tlHoras;i++)
-                        {
-                            if(cod_empresa==vCodEmpresH[i])
-                            {
-                            certo=2;
-                            }
-                        }
-                        }
-                        if(certo==2)
-                        {
-                        printf("Entre com o numero do Voluntario em que deseja excluir as horas:");
-                        scanf("%d", &numero_vol);          
-                        for(i=0;i<tlHoras;i++)
-                        {
-                            if(numero_vol==vNumVoluntH[i])
-                            {
-                            certo=3;
-                            k=i;
-                            }
-                        }                                         
-                        }
-                        if(certo==3)
-                        {
-                            printf("Excluindo Horas Registradas do Projeto %d, empresa %d e voluntario %d\n", cod_projeto, cod_empresa, numero_vol);
-                            for(k=k;k<tlHoras;k++)
-                            {   
-                                vCodEmpresH[k]=vCodEmpresa[k+1];
-                                vProjetoH[k]=vProjetoH[k+1];
-                                vNumVoluntH[k]=vNumVoluntH[k+1];
-                                vHoras[k]=vHoras[k+1];
-                                tlHoras--;
-                            }
-                        }                 
                             break;
-                    case 5:
-                        printf("Retornando...");
-                        opcao=1;
-                    default: printf("Entrada nao identificada, retornando....\n");
+                        case 4: 
+                            for(i=0;i<tlHoras;i++)
+                            {
+                                printf("\nHORAS:\n");
+                                printf("Projeto(s)    Numero_Voluntario       Cod_Empresa      Horas\n");
+                                    printf("[ %d]         [ %d]                [  %d]          [ %d]\n", vProjetoH[i], vNumVoluntH[i], vCodEmpresH[i], vHoras[i]);
+                            }
+                            certo=0;
+                            printf("Exclusão de Horas:\n");
+                            printf("Entre com o codigo do projeto em que se deseja excuir as horas:");
+                            scanf("%d", &cod_projeto);
+                            for(i=0;i<tlHoras;i++)
+                            {
+                                if(cod_projeto==vProjetoH[i])
+                                {
+                                certo=1;
+                                }
+                            }
+                            if(certo==1)
+                            {
+                            printf("Entre com o numero da empresa que deseja exluir as horas");
+                            scanf("%d", &cod_empresa);
+                            for(i=0;i<tlHoras;i++)
+                            {
+                                if(cod_empresa==vCodEmpresH[i])
+                                {
+                                certo=2;
+                                }
+                            }
+                            }
+                            if(certo==2)
+                            {
+                            printf("Entre com o numero do Voluntario em que deseja excluir as horas:");
+                            scanf("%d", &numero_vol);          
+                            for(i=0;i<tlHoras;i++)
+                            {
+                                if(numero_vol==vNumVoluntH[i])
+                                {
+                                certo=3;
+                                k=i;
+                                }
+                            }                                         
+                            }
+                            if(certo==3)
+                            {
+                                printf("Excluindo Horas Registradas do Projeto %d, empresa %d e voluntario %d\n", cod_projeto, cod_empresa, numero_vol);
+                                for(k=k;k<tlHoras;k++)
+                                {   
+                                    vCodEmpresH[k]=vCodEmpresa[k+1];
+                                    vProjetoH[k]=vProjetoH[k+1];
+                                    vNumVoluntH[k]=vNumVoluntH[k+1];
+                                    vHoras[k]=vHoras[k+1];
+                                    tlHoras--;
+                                }
+                            }                 
+                                break;
+                        case 5:
+                            printf("Retornando...");
+                            opcao=7;
+                            break;
+                        default: printf("Entrada nao identificada, retornando....\n");
+                        }
                     }
-                    break;
+                        
+                        break;
 
                 //Lancamento de ahoras
                 case 3:
